@@ -3,6 +3,7 @@ const app = express()
 require("dotenv").config()
 const cors = require("cors")
 const journeyRouter = require("./routes/journeys")
+const stationRouter = require( "./routes/stations")
 const mongoose = require("mongoose")
 mongoose.set("strictQuery", false)
 
@@ -23,7 +24,8 @@ app.use(express.json())
 
 app.use("/api/journeys", journeyRouter)
 app.use("/api/journeys/:id", journeyRouter)
-
+app.use("/api/stations", stationRouter)
+app.use("/api/stations/:id", stationRouter)
 
 
 module.exports = app

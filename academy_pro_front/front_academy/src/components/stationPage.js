@@ -1,11 +1,9 @@
-const StationPage = ({journeys}) => {
-    console.log(journeys,"sationpage")
+const StationPage = () => {
+    
     return(
     <div>
-        here
-        {journeys.map(line => 
-            <li key={line._id}>{line.Departure}</li>
-            )}
+        
+        StationPage
     </div>)
 } 
 export default StationPage
