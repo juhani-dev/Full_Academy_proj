@@ -4,6 +4,7 @@ import stationService from "./services/stations"
 import JourneyPage from './components/journeyPage'
 import StationPage from './components/stationPage'
 import OneStationPage from './components/OneStationPage'
+import FilterStations from './components/stationListPage'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Button, Divider, Container,Typography } from "@mui/material"
 
@@ -19,11 +20,29 @@ const App = () => {
       })
   }, [])
 
+  
   useEffect(() => {
-    stationService.getAll().then((initialData) => {
-      setStations(initialData)
-    })
+      const datas = async () => {
+         try {
+          console.log("here")
+           const get = await stationService.getAll()
+           setStations(get)
+           console.log(get,"get")
+         } catch (e) {
+           console.error(e)
+         }
+    } 
+    datas()
+  
   }, [])
+  if(!stations ||!journeys){
+    return (
+      <div>
+        loading..
+       
+      </div>
+    )
+  }
   
   return (
     <div>
@@ -44,12 +63,20 @@ const App = () => {
             StationPage
           </Button>
           <Divider hidden />
+
           <Routes>
-            <Route path="/stations/:id" element={<OneStationPage journeys={journeys}  />} />
+            <Route
+              path="/stations/:id"
+              element={<OneStationPage journeys={journeys} />}
+            />
             <Route path="/" element={<JourneyPage journeys={journeys} />} />
             <Route
               path="/stations"
               element={<StationPage stations={stations} />}
+            />
+            <Route
+              path="/testing"
+              element={<FilterStations  stations={stations} />}
             />
           </Routes>
         </Container>

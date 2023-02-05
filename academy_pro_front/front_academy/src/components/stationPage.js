@@ -5,6 +5,8 @@ const StationPage = ({stations}) => {
     const [showAll, setShowAll] = useState("")
     const [search, setSearch] = useState("")
 
+   
+
     const stationsToShow = showAll
       ? stations
       : stations.filter((station) => station.Name.toLowerCase().includes(search.toLowerCase()))
@@ -14,7 +16,7 @@ const StationPage = ({stations}) => {
     }
     return (
       <div>
-        
+       
         <TextField
           id="outlined-name"
           label="Search"
