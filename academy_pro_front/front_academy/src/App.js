@@ -1,10 +1,10 @@
 import {useState,useEffect} from 'react'
 import journeyService from "./services/journeys"
 import stationService from "./services/stations"
-import JourneyPage from './components/journeyPage'
 import StationPage from './components/stationPage'
 import OneStationPage from './components/OneStationPage'
 import FilterStations from './components/stationListPage'
+import FilterJourneys from './components/journeyPage'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Button, Divider, Container,Typography } from "@mui/material"
 
@@ -62,6 +62,15 @@ const App = () => {
           >
             StationPage
           </Button>
+          <Button
+            component={Link}
+            to="/testing"
+            variant="contained"
+            color="primary"
+          >
+            testing
+          </Button>
+
           <Divider hidden />
 
           <Routes>
@@ -69,14 +78,16 @@ const App = () => {
               path="/stations/:id"
               element={<OneStationPage journeys={journeys} />}
             />
-            <Route path="/" element={<JourneyPage journeys={journeys} />} />
+            <Route 
+            path="/" 
+            element={<FilterJourneys journeys={journeys} />} />
             <Route
               path="/stations"
               element={<StationPage stations={stations} />}
             />
             <Route
               path="/testing"
-              element={<FilterStations  stations={stations} />}
+              element={<FilterStations stations={stations} />}
             />
           </Routes>
         </Container>

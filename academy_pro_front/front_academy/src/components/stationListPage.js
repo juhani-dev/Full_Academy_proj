@@ -17,7 +17,7 @@ const Items = ({ currentStations }) => {
 }
 const FilterStations = ({stations}) => {
     const [search, setSearch] = useState("")
-     const [showAll, setShowAll] = useState("")
+    const [showAll, setShowAll] = useState("")
     const stationsToShow = showAll
       ? stations
       : stations.filter((station) =>
@@ -40,8 +40,6 @@ const FilterStations = ({stations}) => {
     )
 }
 const PaginatedItems = ({  stations }) => {
- 
-  
  
   const [currentPage, setCurrentPage] = useState(1)
   const [stationsPerPage] = useState(3)
@@ -66,7 +64,7 @@ const PaginatedItems = ({  stations }) => {
     return (
       <div>
         
-        <Items currentItems={currentStations} />
+        <Items currentStations={currentStations} />
         <ReactPaginate
           onPageChange={paginate}
           pageCount={Math.ceil(items.length / stationsPerPage)}
