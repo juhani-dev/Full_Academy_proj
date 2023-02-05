@@ -45,7 +45,7 @@ const App = () => {
           </Button>
           <Divider hidden />
           <Routes>
-            <Route path="/stations/:id" element={<OneStationPage  />} />
+            <Route path="/stations/:id" element={<OneStationPage journeys={journeys}  />} />
             <Route path="/" element={<JourneyPage journeys={journeys} />} />
             <Route
               path="/stations"

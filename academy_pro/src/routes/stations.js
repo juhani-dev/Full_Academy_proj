@@ -11,4 +11,5 @@ stationRouter.get("/:id", async (request, response) => {
   console.log(data, "data")
   response.json(data)
 })
+
 module.exports = stationRouter
